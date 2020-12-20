@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Car} from './car';
+import { ICar} from './ICar';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
@@ -16,36 +16,20 @@ export class CarService {
 
   }
 
-  getCars(): Observable<Car[]> {
-    return this.http.get(`${this.baseUrl}/list`).pipe(
-      map((res: any) => {
-        this.cars = res['data'];
-        return this.cars;
-      }),
-      catchError(this.handleError));
+  getCars() {
+    // todo: napsat service pro GET pozadavek z `${this.baseUrl}/list`
+    // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
   }
 
-  addCar(car: Car): Observable<Car> {
-    return this.http.post(`${this.baseUrl}/store`, { data: car })
-      .pipe(map((res: any) => {
-          this.cars.push(res['data']);
-          return this.cars;
-        }),
-        catchError(this.handleError));
+  addCar(car: ICar) {
   }
 
-  deleteCar(id: number): Observable<Car[]> {
-    const params = new HttpParams()
-      .set('id', id.toString());
+  updateCar(id: number, car: ICar) {
 
-    return this.http.delete(`${this.baseUrl}/delete`, { params: params })
-      .pipe(map(res => {
-          const filteredCars = this.cars.filter((car: any) => {
-            return +car['id'] !== +id;
-          });
-          return this.cars = filteredCars;
-        }),
-        catchError(this.handleError));
+  }
+
+  deleteCar(id: number) {
+
   }
 
   private handleError(error: HttpErrorResponse) {

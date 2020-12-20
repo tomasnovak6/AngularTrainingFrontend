@@ -1,34 +1,5 @@
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>
-<div *ngIf="success" class="alert alert-success">{{success}}</div>
+<h1>{{ headline }}</h1>
 
-<div id="theList">
-  <h2>The list</h2>
+<app-car></app-car>
 
-  <div class="list-group">
-    <div *ngFor="let item of cars;let i = index;" class="list-group-item row">
-      <div class="col-4" style="float:left">
-        <input type="text"
-               [(ngModel)]="cars[i].model"
-               class="form-control"
-               required
-               pattern="^[a-zA-Z]+$"
-               #model="ngModel"
-               [ngClass]="{ 'is-invalid': model.touched && model.invalid }">
-      </div>
-      <div class="col-4" style="float:left">
-        <input type="number"
-               [(ngModel)]="cars[i].price"
-               class="form-control"
-               required
-               #price="ngModel"
-               [ngClass]="{ 'is-invalid': price.touched && price.invalid }">
-      </div>
-      <div class="col-4" style="float:left">
-        <input type="button"
-               value="Delete"
-               class="btn btn-danger btn-sm"
-               (click)="deleteCar(item.id)">
-      </div>
-    </div>
-  </div>
-</div>
+
