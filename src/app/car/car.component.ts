@@ -8,7 +8,9 @@ import { ICar } from './ICar';
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements OnInit {
-  cars: any;
+  
+  public cars: any;
+
   error = '';
   success = '';
 
@@ -17,11 +19,20 @@ export class CarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCars();
+    this.cars = this.getCars();
+
+    console.log('cars 2', this.cars);
   }
 
-  getCars(): void {
+  getCars() {
     // todo: dopsat nacteni seznamu aut
+    return this.carService.getCars()
+        .subscribe(cars => {
+          return cars;
+
+
+          // console.log('cars', this.cars);
+        });
   }
 
   addCar(car: ICar): void {

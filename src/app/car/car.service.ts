@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { ICar} from './ICar';
 import { catchError, map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,9 +17,12 @@ export class CarService {
 
   }
 
-  getCars() {
+  getCars(): Observable<any[]> {
     // todo: napsat service pro GET pozadavek z `${this.baseUrl}/list`
     // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
+
+    return this.http.get<any[]>(`${this.baseUrl}/list`);
+    
   }
 
   addCar(car: ICar) {
