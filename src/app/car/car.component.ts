@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './car.service';
 import { ICar } from './ICar';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-car',
@@ -8,7 +9,6 @@ import { ICar } from './ICar';
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements OnInit {
-  
   public cars: any;
 
   error = '';
@@ -19,20 +19,22 @@ export class CarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cars = this.getCars();
+    this.getCars();
 
     console.log('cars 2', this.cars);
   }
 
-  getCars() {
-    // todo: dopsat nacteni seznamu aut
-    return this.carService.getCars()
-        .subscribe(cars => {
-          return cars;
+  getCars(): void {
+    this.carService.getCars().subscribe(
+      (res) => {
+        console.log('res', res);
 
-
-          // console.log('cars', this.cars);
-        });
+        this.cars = res;
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
   }
 
   addCar(car: ICar): void {

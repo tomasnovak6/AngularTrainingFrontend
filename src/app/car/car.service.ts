@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { ICar} from './ICar';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -21,8 +21,13 @@ export class CarService {
     // todo: napsat service pro GET pozadavek z `${this.baseUrl}/list`
     // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
 
-    return this.http.get<any[]>(`${this.baseUrl}/list`);
-    
+    return this.http.get<any[]>(`${this.baseUrl}/list`).pipe(
+      map((res) => {
+        // @ts-ignore
+        this.cars = res['data'];
+        return this.cars;
+      })
+    );
   }
 
   addCar(car: ICar) {
