@@ -22,9 +22,8 @@ export class CarService {
     // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
 
     return this.http.get<ICar[]>(`${this.baseUrl}/list`).pipe(
-      map((res) => {
-        // @ts-ignore
-        this.cars = res['data'];
+      map((car) => {
+        this.cars = car['data'];
         return this.cars;
       })
     );
