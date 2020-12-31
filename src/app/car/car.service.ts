@@ -17,11 +17,11 @@ export class CarService {
 
   }
 
-  getCars(): Observable<any[]> {
+  getCars(): Observable<ICar[]> {
     // todo: napsat service pro GET pozadavek z `${this.baseUrl}/list`
     // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
 
-    return this.http.get<any[]>(`${this.baseUrl}/list`).pipe(
+    return this.http.get<ICar[]>(`${this.baseUrl}/list`).pipe(
       map((res) => {
         // @ts-ignore
         this.cars = res['data'];

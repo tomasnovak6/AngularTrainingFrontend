@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './car.service';
 import { ICar } from './ICar';
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-car',
@@ -9,30 +8,24 @@ import {Observable} from "rxjs";
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements OnInit {
-  public cars: any;
+  cars: ICar[] = [];
 
   error = '';
   success = '';
 
-  constructor(private carService: CarService) {
-
-  }
+  constructor(private carService: CarService) {}
 
   ngOnInit() {
     this.getCars();
-
-    console.log('cars 2', this.cars);
   }
 
   getCars(): void {
     this.carService.getCars().subscribe(
-      (res) => {
-        console.log('res', res);
-
-        this.cars = res;
+      (car) => {
+        this.cars = car;
       },
       (e) => {
-        console.log(e);
+        console.error('error', e);
       }
     );
   }
