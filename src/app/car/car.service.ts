@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ICar} from './ICar';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map} from 'rxjs/operators';
+import { GlobalService } from '../global/global.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +12,24 @@ import { catchError, map } from 'rxjs/operators';
 export class CarService {
 
   baseUrl = 'http://localhost/AngularTraining/AngularTrainingBackend/api';
-  cars: any;
+  cars: ICar[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private globalService: GlobalService
+  ) {}
 
-  }
-
-/*
-  getCars() {
+  getCars(): Observable<ICar[]> {
     // todo: napsat service pro GET pozadavek z `${this.baseUrl}/list`
     // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
-  }
-*/
 
-  getCars(id: number): Observable<Car> {
-    const url = `${this.baseUrl}/list}/${id}`;
-    return this.http.get<Car>(url).pipe(
-      tap(_ => this.log(`fetched car id=${id}`)),
-      catchError(this.handleError<Car>(`getCar id=${id}`))
+    return this.http.get<ICar[]>(`${this.baseUrl}/list`).pipe(
+      map((car) => {
+        // @ts-ignore
+        this.cars = car['data'];
+        return this.cars;
+      }),
+      catchError(this.globalService.handleError)
     );
   }
 
@@ -40,12 +42,6 @@ export class CarService {
 
   deleteCar(id: number) {
 
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.log(error);
-
-    return throwError('Error! something went wrong.');
   }
 
 }

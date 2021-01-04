@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { CarComponent } from './car/car.component';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab   
+
+import {ButtonModule} from 'primeng/button'; 
+import {InputTextModule} from 'primeng/inputtext';            //api
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import { CarComponent } from './car/car.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AccordionModule,
+    ButtonModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
