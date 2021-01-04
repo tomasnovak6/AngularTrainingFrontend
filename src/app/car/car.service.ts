@@ -16,9 +16,19 @@ export class CarService {
 
   }
 
+/*
   getCars() {
     // todo: napsat service pro GET pozadavek z `${this.baseUrl}/list`
     // metody addCar(), updateCar() a deleteCar() se budou delat po uspesne implementaci getCars()
+  }
+*/
+
+  getCars(id: number): Observable<Car> {
+    const url = `${this.baseUrl}/list}/${id}`;
+    return this.http.get<Car>(url).pipe(
+      tap(_ => this.log(`fetched car id=${id}`)),
+      catchError(this.handleError<Car>(`getCar id=${id}`))
+    );
   }
 
   addCar(car: ICar) {

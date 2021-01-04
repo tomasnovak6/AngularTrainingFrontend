@@ -5,6 +5,12 @@
   <h2>The list of cars</h2>
 
   <div class="list-group">
-    <!-- todo: tady napsat sablonu pro nacteni seznamu aut -->
+    <ul class="cars"> 
+      <li *ngFor="let car of cars"
+        [class.selected]="car === selectedCar"
+        (click)="onSelect(car)">
+        <span class="badge">{{car.id}}</span> {{car.model}}
+      </li>
+  </ul>
   </div>
 </div>
