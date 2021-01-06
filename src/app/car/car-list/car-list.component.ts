@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService } from './car.service';
-import { ICar } from './ICar';
+import { CarService } from '../car.service';
+import { ICar } from '../ICar';
 
 @Component({
-  selector: 'app-car',
-  templateUrl: './car.component.html',
-  styleUrls: ['./car.component.scss']
+  selector: 'app-car-list',
+  templateUrl: './car-list.component.html',
+  styleUrls: ['./car-list.component.scss']
 })
-export class CarComponent implements OnInit {
+export class CarListComponent implements OnInit {
   cars: ICar[] = [];
 
   error = '';
@@ -28,14 +28,6 @@ export class CarComponent implements OnInit {
         console.error('error', e);
       }
     );
-  }
-
-  addCar(car: ICar): void {
-
-  }
-
-  deleteCar(id: number): void {
-
   }
 
   private resetErrors(){

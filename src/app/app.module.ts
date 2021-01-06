@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import { CarComponent } from './car/car.component';
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab   
-
+import {AccordionModule} from 'primeng/accordion'; 
 import {ButtonModule} from 'primeng/button'; 
-import {InputTextModule} from 'primeng/inputtext';            //api
+import {InputTextModule} from 'primeng/inputtext';
+import { AddCarComponent } from './car/add-car/add-car.component';  
+import { ReactiveFormsModule } from '@angular/forms';
+import { CarListComponent } from './car/car-list/car-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent
+    CarListComponent,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import {InputTextModule} from 'primeng/inputtext';            //api
     AccordionModule,
     ButtonModule,
     InputTextModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
