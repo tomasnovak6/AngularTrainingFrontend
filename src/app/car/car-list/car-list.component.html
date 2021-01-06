@@ -21,17 +21,17 @@
           <th>Id</th>
           <th>Model</th>
           <th>Price</th>
-          <th></th>
-          <th></th>
+          <th>Delete</th>
+          <th>Update</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-car>
       <tr>
           <td>{{car.id}}</td>
           <td>{{car.model}}</td>
-          <td>{{car.price}}</td>
-          <td>{{car.}}</td>
-          <td>{{car.}}</td>
+          <td>{{car.price | currency:'CZK '}}</td>
+          <td><button pButton type="button" icon="pi pi-times" iconPos="left" (click)="deleteCar($event)"></button></td>
+          <td><button pButton type="button" icon="pi pi-caret-up" iconPos="left" (click)="updateCar($event)"></button></td>
       </tr>
   </ng-template>
 </p-table>
