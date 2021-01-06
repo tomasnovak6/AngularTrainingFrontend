@@ -8,7 +8,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AddCarComponent implements OnInit {
 
-  addCarForm = new FormGroup({
+    headline = 'Add car';
+    addCarForm = new FormGroup({
     model: new FormControl(''),
     price: new FormControl(''),
   });

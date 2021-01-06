@@ -11,6 +11,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { AddCarComponent } from './car/add-car/add-car.component';  
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarListComponent } from './car/car-list/car-list.component';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CarListComponent } from './car/car-list/car-list.component';
     AccordionModule,
     ButtonModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

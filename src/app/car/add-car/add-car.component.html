@@ -1,17 +1,30 @@
+<h2>{{ headline }}</h2>
 <form [formGroup]="addCarForm" (ngSubmit)="addSubmit()">
     <div class="row">
-        <label>
-            Model:
-            <input type="text" formControlName="model">
-        </label>
+        <div class="col-12">
+            <div class="pt-2">
+                <span class="p-float-label">
+                    <input id="float-input" type="text" formControlName="model" pInputText>
+                    <label for="float-input">Model:</label>
+                </span>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="pt-2">
+                <span class="p-float-label">
+                    <input id="float-input" type="text" formControlName="price" pInputText>
+                    <label for="float-input">Price:</label>
+                </span>
+            </div>
+        </div>
     </div>
     <div class="row">
-        <label>
-            Price:
-            <input type="text" formControlName="price">
-        </label>
-    </div>
-    <div class="row">
-        <button type="submit">Save</button>
+        <div class="col-12">
+            <div class="pt-2">
+                <button pButton type="submit" label="Save"></button>
+            </div>
+        </div>
     </div>
 </form>

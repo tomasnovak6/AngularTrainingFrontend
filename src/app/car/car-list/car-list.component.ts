@@ -8,6 +8,8 @@ import { ICar } from '../ICar';
   styleUrls: ['./car-list.component.scss']
 })
 export class CarListComponent implements OnInit {
+  
+  headline = 'Car list';
   cars: ICar[] = [];
 
   error = '';
