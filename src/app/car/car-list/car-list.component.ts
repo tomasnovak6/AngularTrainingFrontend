@@ -33,11 +33,11 @@ export class CarListComponent implements OnInit {
   }
 
   deleteCar(id: number)  {
-    console.log("delete", id)
+    console.log("delete", id);
   }
 
   updateCar(id: number)  {
-    console.log("update", id)
+    console.log("update", id);
   }
 
   private resetErrors(){

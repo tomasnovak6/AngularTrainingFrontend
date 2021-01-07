@@ -11,13 +11,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import { AddCarComponent } from './car/add-car/add-car.component';  
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarListComponent } from './car/car-list/car-list.component';
+import { CarComponent } from './car/car.component';
 import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarListComponent,
-    AddCarComponent
+    AddCarComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,
